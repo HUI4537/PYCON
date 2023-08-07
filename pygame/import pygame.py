@@ -25,15 +25,11 @@ character_height = character_size[1]
 character_x_pos = (screen_width // 2) - (character_width // 2) #화면 중앙 좌표
 character_y_pos = screen_height - character_height
 
-jumping = False #점프 변수 설정
-jumpCount = 10
-
 
 #이동할 좌표
 
 to_x = 0
 to_y = 0
-               
 
 #이벤트 루프
 running = True
@@ -41,7 +37,6 @@ while running: #게임 진행 루프
     for  event in pygame.event.get(): #어떤 이벤트가 발생했는가?
         if event.type == pygame.QUIT: #게임 X 버튼 눌렀을때
             running = False
-
 
         if event.type == pygame.KEYDOWN: #키가 눌러졌는지 확인
             if event.key == pygame.K_LEFT:
@@ -56,18 +51,7 @@ while running: #게임 진행 루프
             elif event.key == pygame.K_DOWN:
                 to_y += 0.1
                 pass
-            if event.key == pygame.K_SPACE: #여기 안에
-                jumping = True
-        # if not (jumping:
-        #         else: # 여기 else는 키가 눌리지 않으면 계속 실행되는 부분인데
-        #         if jumpCount >= -10:
-        #             character_y_pos  -= (jumpCount * abs(jumpCount)) * 0.5
-        #             jumpCount -= 1
 
-        #         else:
-        #             jumpCount = 10
-        #             isJump = False))
-   
         if event.type == pygame.KEYUP: #방향키를 뗴면 멈춤
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 to_x = 0
@@ -83,11 +67,6 @@ while running: #게임 진행 루프
     elif character_x_pos > screen_width - character_width:
         character_x_pos = screen_width - character_width
 
-    #세로 경계값 처리
-    if character_y_pos < 0:
-        character_y_pos = 0
-    elif character_y_pos > screen_height - character_height:
-        character_y_pos = screen_height - character_height
 
     screen.fill((0, 0, 0)) #리셋
     
